@@ -1,0 +1,500 @@
+swagger: "2.0"
+info:
+  title: beego TestBeego API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.10.1
+  termsOfService: http://beego.me/
+  contact:
+    email: minhnguyen998vp@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /api/v1
+paths:
+  /tour/:
+    get:
+      tags:
+      - tour
+      description: get all tours
+      operationId: TourController.GetAll
+      responses:
+        "200":
+          description: '{ResponseTour} ResponseTour'
+        "403":
+          description: :TourID is empty
+    put:
+      tags:
+      - tour
+      description: update the tour
+      operationId: TourController.Update
+      parameters:
+      - in: body
+        name: body
+        description: body for tour content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Tour'
+      responses:
+        "200":
+          description: '{ResponseTour} ResponseTour'
+        "403":
+          description: not Tour
+    post:
+      tags:
+      - tour
+      description: create tour
+      operationId: TourController.CreateTour
+      parameters:
+      - in: body
+        name: body
+        description: body for tour content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Tour'
+      responses:
+        "200":
+          description: '{ResponseTour} ResponseTour'
+        "403":
+          description: body is empty
+  /tour/{TourID}:
+    get:
+      tags:
+      - tour
+      description: get tour by TourID
+      operationId: TourController.Get
+      parameters:
+      - in: path
+        name: TourID
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseTour} ResponseTour'
+        "403":
+          description: :TourID is empty
+    delete:
+      tags:
+      - tour
+      description: delete the tour
+      operationId: TourController.Delete
+      parameters:
+      - in: path
+        name: TourID
+        description: The TourID you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseTour} ResponseTour'
+        "403":
+          description: TourID is empty
+  /tour/{TourID}/player/:
+    get:
+      tags:
+      - tour/:TourID/player
+      description: get all players
+      operationId: PlayersInTourController.GetAll
+      responses:
+        "200":
+          description: '{ResponsePlayer} ResponsePlayer'
+        "403":
+          description: :TourID is empty
+  /tour/{TourID}/player/{PlayerID}:
+    get:
+      tags:
+      - tour/:TourID/player
+      description: get player by PlayerID
+      operationId: PlayersInTourController.Get
+      parameters:
+      - in: path
+        name: PlayerID
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponsePlayer} ResponsePlayer'
+        "403":
+          description: :PlayerID is empty
+  /tour/{TourID}/round/:
+    get:
+      tags:
+      - tour/:TourID/round
+      description: get all rounds
+      operationId: RoundController.GetAll
+      responses:
+        "200":
+          description: '{ResponseRound} ResponseRound'
+        "403":
+          description: :TourID is empty
+    put:
+      tags:
+      - tour/:TourID/round
+      description: update the round
+      operationId: RoundController.Update
+      parameters:
+      - in: body
+        name: body
+        description: body for round content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Round'
+      responses:
+        "200":
+          description: '{ResponseRound} ResponseRound'
+        "403":
+          description: not Round
+    post:
+      tags:
+      - tour/:TourID/round
+      description: create round
+      operationId: RoundController.CreateRound
+      parameters:
+      - in: body
+        name: body
+        description: body for tour content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Round'
+      responses:
+        "200":
+          description: '{ResponseRound} ResponseRound'
+        "403":
+          description: body is empty
+  /tour/{TourID}/round/{RoundID}:
+    get:
+      tags:
+      - tour/:TourID/round
+      description: get round by RoundID
+      operationId: RoundController.Get
+      parameters:
+      - in: path
+        name: RoundID
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseRound} ResponseRound'
+        "403":
+          description: :RoundID is empty
+    delete:
+      tags:
+      - tour/:TourID/round
+      description: delete the round
+      operationId: RoundController.Delete
+      parameters:
+      - in: path
+        name: RoundID
+        description: The RoundID you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseRound} ResponseRound'
+        "403":
+          description: RoundID is empty
+  /tour/{TourID}/round/{RoundID}/table/:
+    get:
+      tags:
+      - tour/:TourID/round/:RoundID/table
+      description: get all tables
+      operationId: TableController.GetAll
+      responses:
+        "200":
+          description: '{ResponseTable} ResponseTable'
+        "403":
+          description: :RoundID is empty
+    put:
+      tags:
+      - tour/:TourID/round/:RoundID/table
+      description: update the table
+      operationId: TableController.Update
+      parameters:
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Table'
+      responses:
+        "200":
+          description: '{ResponseTable} ResponseTable'
+        "403":
+          description: not Table
+    post:
+      tags:
+      - tour/:TourID/round/:RoundID/table
+      description: create table
+      operationId: TableController.CreateTable
+      parameters:
+      - in: body
+        name: body
+        description: body for tour content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Table'
+      responses:
+        "200":
+          description: '{ResponseTable} ResponseTable'
+        "403":
+          description: body is empty
+  /tour/{TourID}/round/{RoundID}/table/{TableID}:
+    get:
+      tags:
+      - tour/:TourID/round/:RoundID/table
+      description: get tour by TableID
+      operationId: TableController.Get
+      parameters:
+      - in: path
+        name: TableID
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseTable} ResponseTable'
+        "403":
+          description: :TableID is empty
+    delete:
+      tags:
+      - tour/:TourID/round/:RoundID/table
+      description: delete the table
+      operationId: TableController.Delete
+      parameters:
+      - in: path
+        name: TableID
+        description: The TableID you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseTable} ResponseTable'
+        "403":
+          description: TableID is empty
+  /tour/{TourID}/round/{RoundID}/table/{TableID}/match/:
+    put:
+      tags:
+      - tour/:TourID/round/:RoundID/table/:TableID/match
+      description: update the match
+      operationId: MatchController.Update
+      parameters:
+      - in: body
+        name: body
+        description: body for match content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Match'
+      responses:
+        "200":
+          description: '{ResponseMatch} ResponseMatch'
+        "403":
+          description: not Match
+    post:
+      tags:
+      - tour/:TourID/round/:RoundID/table/:TableID/match
+      description: create match
+      operationId: MatchController.CreateMatch
+      parameters:
+      - in: body
+        name: body
+        description: body for match content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Match'
+      responses:
+        "200":
+          description: '{ResponseMatch} ResponseMatch'
+        "403":
+          description: body is empty
+  /tour/{TourID}/round/{RoundID}/table/{TableID}/match/{MatchID}:
+    get:
+      tags:
+      - tour/:TourID/round/:RoundID/table/:TableID/match
+      description: get match by MatchID
+      operationId: MatchController.Get
+      parameters:
+      - in: path
+        name: MatchID
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseMatch} ResponseMatch'
+        "403":
+          description: :MatchID is empty
+    delete:
+      tags:
+      - tour/:TourID/round/:RoundID/table/:TableID/match
+      description: delete the match
+      operationId: MatchController.Delete
+      parameters:
+      - in: path
+        name: MatchID
+        description: The MatchID you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponseMatch} ResponseMatch'
+        "403":
+          description: MatchID is empty
+  /tour/{TourID}/round/{RoundID}/table/{TableID}/player/:
+    put:
+      tags:
+      - tour/:TourID/round/:RoundID/table/:TableID/player
+      description: update the player
+      operationId: PlayerController.Update
+      parameters:
+      - in: body
+        name: body
+        description: body for player content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Player'
+      responses:
+        "200":
+          description: '{ResponsePlayer} ResponsePlayer'
+        "403":
+          description: not Player
+    post:
+      tags:
+      - tour/:TourID/round/:RoundID/table/:TableID/player
+      description: create player
+      operationId: PlayerController.CreatePlayer
+      parameters:
+      - in: body
+        name: body
+        description: body for player content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Player'
+      responses:
+        "200":
+          description: '{ResponsePlayer} ResponsePlayer'
+        "403":
+          description: body is empty
+  /tour/{TourID}/round/{RoundID}/table/{TableID}/player/{PlayerID}:
+    delete:
+      tags:
+      - tour/:TourID/round/:RoundID/table/:TableID/player
+      description: delete the player
+      operationId: PlayerController.Delete
+      parameters:
+      - in: path
+        name: PlayerID
+        description: The PlayerID you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{ResponsePlayer} ResponsePlayer'
+        "403":
+          description: PlayerID is empty
+definitions:
+  models.Match:
+    title: Match
+    type: object
+    properties:
+      PlayerOneGoals:
+        type: integer
+        format: int64
+      PlayerOneID:
+        type: integer
+        format: int64
+      PlayerTwoGoals:
+        type: integer
+        format: int64
+      PlayerTwoID:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      time:
+        $ref: '#/definitions/models.MatchTime'
+  models.MatchInfo:
+    type: object
+  models.MatchTime:
+    title: MatchTime
+    type: object
+    properties:
+      start:
+        type: string
+  models.Player:
+    title: Player
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      next:
+        type: boolean
+  models.PlayerInfo:
+    type: object
+  models.Round:
+    title: Round
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      time:
+        $ref: '#/definitions/models.RoundTime'
+  models.RoundTime:
+    title: RoundTime
+    type: object
+    properties:
+      end:
+        type: string
+      start:
+        type: string
+  models.Table:
+    title: Table
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      matchs:
+        type: array
+        items:
+          $ref: '#/definitions/models.MatchInfo'
+      name:
+        type: string
+      players:
+        type: array
+        items:
+          $ref: '#/definitions/models.PlayerInfo'
+  models.Tour:
+    title: Tour
+    type: object
+    properties:
+      des:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      time:
+        $ref: '#/definitions/models.TourTime'
+  models.TourTime:
+    title: TourTime
+    type: object
+    properties:
+      start:
+        type: string
+tags:
+- name: tour
+  description: |
+    Operations about Tour
+- name: tour/:TourID/player
+  description: |
+    Operations about PlayerInTour
